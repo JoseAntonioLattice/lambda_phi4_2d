@@ -27,3 +27,6 @@ run :
 
 clean:
 	rm -r build
+
+readme:
+	pandoc -f gfm README.md -o doc/README.pdf
