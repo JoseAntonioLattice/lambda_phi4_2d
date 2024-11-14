@@ -1,0 +1,9 @@
+&lattice
+Lx = 10
+Ly = 10
+/
+
+&pars
+lambda = 1.0
+epsilon = 10.0
+/
