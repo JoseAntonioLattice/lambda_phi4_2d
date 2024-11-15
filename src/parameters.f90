@@ -4,10 +4,16 @@ module parameters
   implicit none
 
   integer(i4) :: Lx, Ly
+
+  integer(i4) :: Nthermalization, Nmeasurements, Nskip
+  
   real(dp) :: lambda
   real(dp) :: epsilon
 
+  character(100) :: algorithm
+
   namelist /lattice/ Lx, Ly
+  namelist /simulation_params/ Nthermalization,Nmeasurements, Nskip, algorithm
   namelist /pars/ lambda, epsilon
   
 contains
@@ -22,11 +28,13 @@ contains
     open(newunit = inunit, file = trim(parameters_file))
 
     read(inunit, nml = lattice)
+    read(inunit, nml = simulation_params)
     read(inunit, nml = pars)
 
     close(inunit)
 
     write(*, nml = lattice)
+    write(*, nml = simulation_params)
     write(*, nml = pars)
     
   end subroutine read_input

@@ -1,6 +1,7 @@
 module functions
 
   use precision
+  use pbc, only: ip, im
   implicit none
 
 contains
@@ -12,17 +13,17 @@ contains
 
     real(dp) :: lagrangian
 
-    lagrangian = 0.5 * ( ( phi(ip(x(1)),x(2)) - phi(x(1),x(2)) ) ** 2  &
-                       + ( phi(x(1),ip(x(2))) - phi(x(1),x(2)) ) ** 2 )&
-               + 0.5 * msq * phi(x(1),x(2)) ** 2 &
-               + 0.25 * lambda * phi(x(1),x(2)) ** 4 
+    lagrangian = 0.5 * ( ( phi(ip(x(1)),x(2)) - phi(x(1),x(2)) )**2  &
+                       + ( phi(x(1),ip(x(2))) - phi(x(1),x(2)) )**2 )&
+               + 0.5 * msq * phi(x(1),x(2))**2 &
+               + 0.25 * lambda * phi(x(1),x(2))**4 
     
   end function lagrangian
   
   function action(phi,msq,lambda)
     real(dp), intent(in) :: phi(:,:)
     real(dp), intent(in) :: msq, lambda
-
+    integer(i4) :: x1, x2
     real(dp) :: action
 
     action  =  0.0_dp
@@ -35,13 +36,13 @@ contains
 
   end function action
 
-  function DS(phi,msq,lambda)
+  function DS(phi,phi_p,x,msq,lambda)
+    use parameters, only : epsilon
     real(dp), intent(in) :: phi(:,:)
-    real(dp), intent(in) :: msq, lambda
-    real(dp) :: DS, phi_p, r
+    integer(i4), intent(in) :: x(2)
+    real(dp), intent(in) :: phi_p, msq, lambda
+    real(dp) :: DS, r
 
-    call random_number(r)
-    phi_p = r
     DS = 2 * (phi_p**2 - phi(x(1),x(2))**2) &
     + (phi_p - phi(x(1),x(2))) &
     * ( phi(ip(x(1)),x(2)) + phi(x(1),ip(x(2))) + phi(im(x(1)),x(2)) + phi(x(1),im(x(2))) )&

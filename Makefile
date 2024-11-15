@@ -4,7 +4,7 @@ src_files = app/main.f90
 program = build/2d_lambda_phi4
 FLAGS = -c
 
-$(program) : build/obj/precision.o build/obj/parameters.o build/obj/main.o
+$(program) : build/obj/precision.o build/obj/parameters.o build/obj/pbc.o build/obj/functions.o build/obj/field.o build/obj/observables.o build/obj/dynamics.o build/obj/main.o
 	$(FC) $^ -o $@
 
 build/obj/%.o: src/%.f90 build/mod build/obj

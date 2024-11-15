@@ -3,6 +3,13 @@ Lx = 10
 Ly = 10
 /
 
+&simulation_params
+Nthermalization = 1000
+Nmeasurements = 10000
+Nskip = 10
+algorithm = "metropolis"
+/
+
 &pars
 lambda = 1.0
 epsilon = 10.0
