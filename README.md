@@ -10,7 +10,9 @@ This code simulates the 1-component $\lambda \phi^4$ theory.
 
 # Theory
 Let $\phi(x)\in\mathbb{R}$ be a field. The Lagrangian density in Euclidian time reads
+
  $$ \mathcal{L} = {1 \over 2}\partial_{\mu}\phi(x)\partial_{\mu}\phi(x) +  {1 \over 2}m^2\phi(x)^2 +  {1 \over 4}\lambda \phi(x)^4,$$
+ 
  where $\lambda \ge 0$, for the potential to be bounded from below. The continuum action reads
 
 $$S[\phi] = \int dx^d \ \mathcal{L}(\phi,\partial_{\mu}\phi).$$
