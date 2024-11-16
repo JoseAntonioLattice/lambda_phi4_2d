@@ -18,6 +18,7 @@ Let $\phi(x)\in\mathbb{R}$ be a field. The Lagrangian density in Euclidian time 
 $$S[\phi] = \int dx^d \ \mathcal{L}(\phi,\partial_{\mu}\phi).$$
 
 With the lattice regularization
+
 $$
 \begin{aligned}
 \phi(x) & \to  \phi_x \\
@@ -27,6 +28,7 @@ $$
 $$
 
 The unit vectors are defined as
+
 $$ \hat{1}=  \begin{pmatrix}
 0 \\
 1 \\
@@ -37,11 +39,13 @@ $$ \hat{1}=  \begin{pmatrix}
 $$
 
 On the lattice the action takes the form
-$$ S[\phi] = \sum_x a^d \left\{ \frac{1}{2}\sum_{\mu}\left( \frac{\phi_{x+a\hat{\mu}} - \phi_x}{a}\right)^2 + \frac{1}{2}m^2\phi_x^2 + \frac{1}{4}\lambda \phi_x^4 \right\}.$$
+
+$$ S[\phi] = \sum_x a^d \left\\{ \frac{1}{2}\sum_{\mu} \left( \frac{\phi_{x+a\hat{\mu}} - \phi_x}{a} \right)^2 + \frac{1}{2}m^2\phi_x^2 + \frac{1}{4}\lambda \phi_x^4 \right\\}. $$
 
 In lattice units we set $a = 1$.
 
 Expanding the action through the lattice
+
 $$
 \begin{aligned}
 S[\phi] & =   \frac{1}{2}\sum_{\mu=1}^2\left(\phi_{(1,1)+\hat{\mu}} - \phi_{(1,1)}\right)^2 + \frac{1}{2}m^2\phi_{(1,1)}^2 + \frac{1}{4}\lambda \phi_{(1,1)}^4 \\
@@ -62,10 +66,11 @@ S[\phi] & =   \frac{1}{2}\sum_{\mu=1}^2\left(\phi_{(1,1)+\hat{\mu}} - \phi_{(1,1
 $$
 
 If we update the field $\phi$ at site $x = (i,j)$, that is, $\phi_x \to \phi'_x$, the action becomes
+
 $$
 \begin{aligned}
 S[\phi'] & = \cdots \\
-& + \frac{1}{2}\left[\left( \phi_{(i+1,j-1)} - \phi_{(i,j-1)}\right)^2 + \left( \phi'_{(i,j)} - \phi_{(i,j-1)}\right)^2 \right] + \frac{1}{2}m^2\phi_{(i,j-1)}^2 + \frac{1}{4}\lambda \phi_{(i,j-1)}^4 \\
+& + \frac{1}{2} \left[ \left( \phi_{(i+1,j-1)} - \phi_{(i,j-1)} \right)^2 + \left( \phi'_{(i,j)} - \phi_{(i,j-1)} \right)^2 \right] + \frac{1}{2}m^2\phi_{(i,j-1)}^2 + \frac{1}{4}\lambda \phi_{(i,j-1)}^4 \\
 & \vdots \\
 & + \frac{1}{2}\left[\left( \phi'_{(i,j)} - \phi_{(i-1,j)}\right)^2 + \left( \phi_{(i-1,j+1)} - \phi_{(i-1,j)}\right)^2 \right] + \frac{1}{2}m^2\phi_{(i-1,j)}^2 + \frac{1}{4}\lambda \phi_{(i-1,j)}^4 \\
 & + \frac{1}{2}\left[\left( \phi_{(i+1,j)} - \phi'_{(i,j)}\right)^2 + \left( \phi_{(i,j+1)} - \phi'_{(i,j)}\right)^2 \right] + \frac{1}{2}m^2\phi_{(i,j)}'^2 + \frac{1}{4}\lambda \phi_{(i,j)}'^4 \\
@@ -92,7 +97,6 @@ $$
 & + \frac{1}{2}m^2\left(\phi_{(i,j)}'^2 - \phi_{(i,j)}^2\right) + \frac{1}{4}\lambda\left( \phi_{(i,j)}'^4 - \phi_{(i,j)}^4\right) 
 \end{aligned}
 $$
-
 
 ## Metropolis Algorithm
 
