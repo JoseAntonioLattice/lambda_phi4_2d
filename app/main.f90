@@ -8,18 +8,18 @@ program lambda_phi4_2d
   implicit none
 
   integer :: i, save_unit, term_unit, obs_unit
-  real(dp) :: msq(100), msqi = -10.0_dp, msqf = 10.0_dp
+  real(dp) :: msq(1), msqi = -10.0_dp, msqf = 10.0_dp
   print"(a)", "2 dimensional lambda phi^4 theory"
 
-  msq = [(msqi + ((msqf - msqi)/(size(msq) - 1))*i, i = 0, size(msq) - 1 )]
+  msq = [1.0_dp]![(msqi + ((msqf - msqi)/(size(msq) - 1))*i, i = 0, size(msq) - 1 )]
   
   call read_input()
   call allocate_pbc(Lx)
   allocate(magnetization(Nmeasurements))
   allocate(phi(Lx,Lx))
 
-  !call hot_start(phi)
-  call cold_start(phi)
+  call hot_start(phi)
+  !call cold_start(phi)
   
   open(newunit = save_unit, file = "data/configurations.dat")
   open(newunit = term_unit,  file = "data/cold_data.dat")

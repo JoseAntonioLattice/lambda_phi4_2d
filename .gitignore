@@ -1,4 +1,7 @@
 /build/*
 data
+/images
+*.avi
+*.mp4
 *~
 \#*
