@@ -35,12 +35,12 @@ $$ \hat{1}=  \begin{pmatrix}
 \end{pmatrix}, \ \hat{2}=  \begin{pmatrix}
 1 \\
 0 \\
-\end{pmatrix}
+\end{pmatrix}.
 $$
 
 On the lattice the action takes the form
 
-$$ S[\phi] = \sum_x a^d \left\\{ \frac{1}{2}\sum_{\mu} \left( \frac{\phi_{x+a\hat{\mu}} - \phi_x}{a} \right)^2 + \frac{1}{2}m^2\phi_x^2 + \frac{1}{4}\lambda \phi_x^4 \right\\}. $$
+$$ S[\phi] = \sum_x a^d \left\{ \frac{1}{2}\sum_{\mu} \left( \frac{\phi_{x+a\hat{\mu}} - \phi_x}{a} \right)^2 + \frac{1}{2}m^2\phi_x^2 + \frac{1}{4}\lambda \phi_x^4 \right\}. $$
 
 In lattice units we set $a = 1$.
 
@@ -93,7 +93,7 @@ $$
 & + \frac{1}{2}\left[ \left(\phi_{(i,j)}'^2 - \phi_{(i,j)}^2\right) - 2\phi_{(i,j+1)}\left( \phi'_{(i,j)} - \phi_{(i,j)}\right) \right] \\
 & + \frac{1}{2}m^2\left(\phi_{(i,j)}'^2 - \phi_{(i,j)}^2\right) + \frac{1}{4}\lambda\left( \phi_{(i,j)}'^4 - \phi_{(i,j)}^4\right) \\
 & = 2  \left(\phi_{(i,j)}'^2 - \phi_{(i,j)}^2\right)\\
-& - 2\left( \phi'_{(i,j)} - \phi_{(i,j)}\right) \left(\phi_{(i-1,j)} + \phi_{(i,j-1)} + \phi_{(i+1,j)} + \phi_{(i,j-1)} \right)\\
+& - 2\left( \phi'_{(i,j)} - \phi_{(i,j)}\right) \left(\phi_{(i-1,j)} + \phi_{(i,j-1)} + \phi_{(i+1,j)} + \phi_{(i,j+1)} \right)\\
 & + \frac{1}{2}m^2\left(\phi_{(i,j)}'^2 - \phi_{(i,j)}^2\right) + \frac{1}{4}\lambda\left( \phi_{(i,j)}'^4 - \phi_{(i,j)}^4\right) 
 \end{aligned}
 $$
