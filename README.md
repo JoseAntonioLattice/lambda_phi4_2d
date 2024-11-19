@@ -103,3 +103,4 @@ $$
 We generate a change in the field, $\phi_x \to \phi'_x$ and accept it with probability
 
 $$ p = \min(1,\exp\left(-\Delta S\right)).$$
+
