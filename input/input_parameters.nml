@@ -4,7 +4,7 @@ Ly = 150
 /
 
 &simulation_params
-Nthermalization = 1000
+Nthermalization = 2000
 Nmeasurements = 1000
 Nskip = 10
 algorithm = "metropolis"

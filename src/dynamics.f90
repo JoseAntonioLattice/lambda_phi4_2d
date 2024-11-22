@@ -58,19 +58,19 @@ contains
     do i = 1, Nthermalization
        call sweeps(phi,trim(algorithm),args)
        call save_configuration(phi, save_unit)
-       write(obs_unit,*) action(phi,args(1),args(2))
+       write(obs_unit,*) action(phi,args(1),args(2)), sum(phi)
     end do
     
   end subroutine thermalization
 
-  subroutine take_measurements(phi, Nmeasurements, Nskip, algorithm, args, obs_unit)
+  subroutine take_measurements(phi, Nmeasurements, Nskip, algorithm, args, obs_unit, conf_unit)
     use functions, only : action
     use observables, only : magnetization
     real(dp), intent(inout) :: phi(:,:)
     integer(i4), intent(in) :: Nmeasurements, Nskip
     character(*), intent(in) :: algorithm
     real(dp), intent(in) :: args(2)
-    integer(i4), intent(in) :: obs_unit
+    integer(i4), intent(in) :: obs_unit, conf_unit
     integer(i4) :: i, j
     
     do i = 1, Nmeasurements
@@ -79,6 +79,7 @@ contains
        end do
        magnetization(i) = sum(phi)
        write(obs_unit,*) action(phi,args(1),args(2)), magnetization(i), abs(magnetization(i))
+       call save_configuration(phi, conf_unit)
     end do
     
   end subroutine take_measurements
