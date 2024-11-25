@@ -53,32 +53,44 @@ contains
     character(*), intent(in) :: algorithm
     real(dp), intent(in) :: args(2)
     integer(i4), intent(in) :: save_unit, obs_unit
-    integer(i4) :: i
+    integer(i4) :: i,Lx, Ly, Vol
+
+    Lx = size(phi(:,1))
+    Ly = size(phi(1,:))
+    Vol = Lx*Ly
     
     do i = 1, Nthermalization
        call sweeps(phi,trim(algorithm),args)
        call save_configuration(phi, save_unit)
-       write(obs_unit,*) action(phi,args(1),args(2)), sum(phi)
+       write(obs_unit,*) action(phi,args(1),args(2))/vol, sum(phi)/vol
     end do
     
   end subroutine thermalization
 
   subroutine take_measurements(phi, Nmeasurements, Nskip, algorithm, args, obs_unit, conf_unit)
     use functions, only : action
-    use observables, only : magnetization
+    use observables
     real(dp), intent(inout) :: phi(:,:)
     integer(i4), intent(in) :: Nmeasurements, Nskip
     character(*), intent(in) :: algorithm
     real(dp), intent(in) :: args(2)
     integer(i4), intent(in) :: obs_unit, conf_unit
-    integer(i4) :: i, j
+    integer(i4) :: i, j, k, Lx, Ly, Vol
+
+    Lx = size(phi(:,1))
+    Ly = size(phi(1,:))
+    Vol = Lx*Ly
     
     do i = 1, Nmeasurements
        do j = 1, Nskip
           call sweeps(phi,trim(algorithm),args)
        end do
        magnetization(i) = sum(phi)
-       write(obs_unit,*) action(phi,args(1),args(2)), magnetization(i), abs(magnetization(i))
+       mag1(i) = sum(phi(1,:))/Lx
+       do k = 1, Lx
+          correlation(i,k) = mag1(i)*sum(phi(k,:))/Lx**2
+       end do
+       write(obs_unit,*) action(phi,args(1),args(2))/Vol, magnetization(i)/Vol, abs(magnetization(i))/Vol, mag1(i), correlation(i,:)
        call save_configuration(phi, conf_unit)
     end do
     
@@ -104,7 +116,7 @@ contains
   end subroutine sweeps
 
   subroutine metropolis(phi,x,acceptance_rate,msq,lambda) 
-    use functions, only : DS
+    use functions, only : DS, DS2
     use parameters, only : epsilon
     real(dp), intent(inout) :: phi(:,:)
     integer(i4), intent(in) :: x(2)
