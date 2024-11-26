@@ -37,7 +37,28 @@ program lambda_phi4_2d
   end do
 
   do i = 1, Lx
-     write(avr_unit,*) sum(correlation(:,i))/Nmeasurements - (sum(mag1)/Nmeasurements)**2
+     write(avr_unit,*) avr(correlation(:,i)), std_error(correlation(:,i)) !- (sum(mag1)/Nmeasurements)**2
   end do
+
+contains
+
+  function avr(x)
+    real(dp), intent(in) :: x(:)
+    real(dp) :: avr
+
+    avr = sum(x)/size(x)
+    
+  end function avr
+
+  function std_error(x)
+    real(dp), intent(in) :: x(:)
+    real(dp) :: std_error, s, mean
+
+    mean = avr(x)
+    s = sqrt(sum((x - mean)**2)/(size(x) - 1))
+
+    std_error = s/sqrt(real(size(x),dp))
+    
+  end function std_error
   
 end program lambda_phi4_2d
