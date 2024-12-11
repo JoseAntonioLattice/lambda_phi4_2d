@@ -12,7 +12,7 @@ program lambda_phi4_2d
   
   print"(a)", "2 dimensional lambda phi^4 theory"
 
-  msq = [-0.075_dp]![(msqi + ((msqf - msqi)/(size(msq) - 1))*i, i = 0, size(msq) - 1 )]
+  msq = [-0.11_dp]![(msqi + ((msqf - msqi)/(size(msq) - 1))*i, i = 0, size(msq) - 1 )]
   
   call read_input()
   call allocate_pbc(Lx)
